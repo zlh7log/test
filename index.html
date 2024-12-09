@@ -13,14 +13,18 @@
 <body>
     <h1>Turtle Drawing Simulation</h1>
     <canvas id="drawingCanvas" width="400" height="400"></canvas>
+    <audio controls autoplay loop>
+        <source src="background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
         const canvas = document.getElementById("drawingCanvas");
         const ctx = canvas.getContext("2d");
 
-        // Simulating turtle movement
         let x = 100, y = 100; // Start position
         let angle = 0;
+        let lineLength = 0; // Start with length 0
 
         // Draw a line
         function drawLine(length) {
@@ -42,15 +46,22 @@
             angle += degrees;
         }
 
-        // Drawing a square
-        function drawSquare() {
-            for (let i = 0; i < 4; i++) {
-                drawLine(100);
-                turn(90);
+        // Drawing a square with animation
+        function animateDrawing() {
+            if (lineLength < 100) {
+                drawLine(1); // Draw 1 unit at a time
+                lineLength++;
+                requestAnimationFrame(animateDrawing); // Continue the animation
+            } else {
+                lineLength = 0; // Reset length for the next side
+                turn(90); // Turn 90 degrees to draw the next side
+                if (angle >= 360) {
+                    angle = 0; // Reset angle after completing a square
+                }
             }
         }
 
-        drawSquare();
+        animateDrawing(); // Start the animation
     </script>
 </body>
 </html>
