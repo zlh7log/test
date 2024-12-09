@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turtle Drawing with Sound</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <h1>Interactive Turtle Drawing</h1>
+    <p>Watch the turtle draw a square while listening to the background music!</p>
+
+    <!-- Canvas for Turtle Drawing -->
+    <div id="turtle-container">
+        <py-script>
+            import turtle
+
+            screen = turtle.Screen()
+            screen.setup(width=400, height=400)
+            t = turtle.Turtle()
+
+            # Drawing a square
+            for _ in range(4):
+                t.forward(100)
+                t.right(90)
+
+            screen.mainloop()
+        </py-script>
+    </div>
+
+    <!-- Background Music -->
+    <audio controls autoplay loop>
+        <source src="background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</body>
+</html>
