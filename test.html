@@ -3,58 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turtle Drawing (Canvas)</title>
+    <title>Image Example</title>
     <style>
-        canvas {
-            border: 1px solid black;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Turtle Drawing Simulation</h1>
-    <canvas id="drawingCanvas" width="400" height="400"></canvas>
-    <audio controls autoplay loop>
-        <source src="background.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <h1>Welcome to My Image Page</h1>
+    <p>Below is the image I want to show:</p>
 
-    <script>
-        const canvas = document.getElementById("drawingCanvas");
-        const ctx = canvas.getContext("2d");
+    <!-- Image tag to load the image -->
+    <img src="tabby.png" alt="A sample image">
 
-        // Simulating turtle movement
-        let x = 100, y = 100; // Start position
-        let angle = 0;
-
-        // Draw a line
-        function drawLine(length) {
-            const rad = (Math.PI / 180) * angle;
-            const x2 = x + length * Math.cos(rad);
-            const y2 = y + length * Math.sin(rad);
-
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x2, y2);
-            ctx.stroke();
-
-            x = x2;
-            y = y2;
-        }
-
-        // Turn turtle
-        function turn(degrees) {
-            angle += degrees;
-        }
-
-        // Drawing a square
-        function drawSquare() {
-            for (let i = 0; i < 4; i++) {
-                drawLine(100);
-                turn(90);
-            }
-        }
-
-        drawSquare();
-    </script>
+    <p>This is an example of how to display an image in HTML.</p>
 </body>
 </html>
